@@ -10,9 +10,8 @@ CREATE TABLE book (
     title TEXT NOT NULL,
     isbn CHARACTER varying(32) NOT NULL,
     fk_publisher_id SERIAL NOT NULL,
-    CONSTRAINT fk_publisher_id FOREIGN KEY (fk_publisher_id) REFERENCES publisher (publisher_id) ON DELETE CASCADE -- If publisher deleted, delete their books too
+    CONSTRAINT pk_book_id PRIMARY KEY (book_id) CONSTRAINT fk_publisher_id FOREIGN KEY (fk_publisher_id) REFERENCES publisher (publisher_id) ON DELETE CASCADE -- If publisher deleted, delete their books too
     ON UPDATE CASCADE, -- If publisher_id changes, update books too
-    CONSTRAINT pk_book_id PRIMARY KEY (book_id)
 );
 
 ALTER TABLE book
