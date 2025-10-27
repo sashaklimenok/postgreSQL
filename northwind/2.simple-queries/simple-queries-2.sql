@@ -62,9 +62,10 @@ WHERE unit_price > 30
 
 SELECT AVG(shipped_date - order_date)
 FROM orders
+WHERE ship_country = 'USA'
 
 # 6. Найти сумму, на которую имеется товаров (кол-во * цену) причём таких, которые планируется продавать и в будущем (см. на поле discontinued)
 
 SELECT SUM(units_in_stock * unit_price)
 FROM products
-WHERE discontinued >= 1
+WHERE discontinued <> 1
