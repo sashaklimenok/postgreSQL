@@ -35,3 +35,5 @@ SELECT * FROM publisher;
 DROP TABLE publisher;
 
 DROP TABLE book;
+
+CREATE DATABASE northwind

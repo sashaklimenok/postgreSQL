@@ -1,0 +1,24 @@
+<p>Имеется следующая функция, которую мы написали в разделе, посвящённом, собственно, функциям:</p><pre class="prettyprint linenums">create or replace function should_increase_salary(
+	cur_salary numeric,
+	max_salary numeric DEFAULT 80, 
+	min_salary numeric DEFAULT 30,
+	increase_rate numeric DEFAULT 0.2
+	) returns bool AS $$
+declare
+	new_salary numeric;
+begin
+	if cur_salary &gt;= max_salary or cur_salary &gt;= min_salary then 		
+		return false;
+	end if;
+	
+	if cur_salary &lt; min_salary then
+		new_salary = cur_salary + (cur_salary * increase_rate);
+	end if;
+	
+	if new_salary &gt; max_salary then
+		return false;
+	else
+		return true;
+	end if;	
+end;
+$$ language plpgsql;</pre><p>Задание:</p><p>Модифицировать функцию should_increase_salary разработанную в секции по функциям таким образом, чтобы запретить (выбрасывая исключения) передачу аргументов так, что:</p><ul><li><p>минимальный уровень з/п превышает максимальный</p></li><li><p>ни минимальный, ни максимальный уровень з/п не могут быть меньше нуля</p></li><li><p>коэффициент повышения зарплаты не может быть ниже 5%</p></li></ul><p>Протестировать реализацию, передавая следующие значения аргументов <br>(с - уровень "проверяемой" зарплаты, r - коэффициент повышения зарплаты):</p><p>c = 79, max = 10, min = 80, r = 0.2</p><p>c = 79, max = 10, min = -1, r = 0.2</p><p>c = 79, max = 10, min = 10, r = 0.04</p>
