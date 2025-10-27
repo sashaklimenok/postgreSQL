@@ -44,9 +44,7 @@ ORDER BY ship_country;
 
 SELECT *
 FROM orders
-ORDER BY required_date DESC;
-
-SELECT * FROM orders ORDER BY required_date ASC;
+ORDER BY required_date DESC, shipped_date;
 
 # 3. Выбрать минимальную цену товара среди тех продуктов, которых в продаже более 30 единиц.
 
