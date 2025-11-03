@@ -1,3 +1,10 @@
+-- WHERE
+-- AND, OR
+-- BETWEEN
+-- IN, NOT IN,
+-- ORDER BY
+-- MIN, MAX, AVG
+
 SELECT
     company_name,
     contact_name,
