@@ -12,3 +12,17 @@
 -- DROP TABLE table_name
 
 -- TRUNCATE TABLE table_name
+
+CREATE SEQUENCE seq1;
+
+SELECT nextval('seq1');
+
+SELECT currval('seq1');
+
+SELECT lastval();
+
+SELECT setval('seq1', 2);
+
+CREATE SEQUENCE IF NOT EXISTS seq2 INCREMENT 3 MINVALUE 0 MAXVALUE 128 START
+WITH
+    0
